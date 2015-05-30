@@ -1,15 +1,19 @@
 package com.mobifever.v4u.network;
 
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.List;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Notification;
+import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 import com.mobifever.v4u.model.Disaster;
@@ -65,7 +69,7 @@ public class ResponseTranslator {
 
             Type t = new TypeToken<List<Disaster>>(){}.getType();
 
-            disasterList = gson.fromJson(jsonObj.getJSONArray(ResponseKeys.DATA).toString(), t);
+            disasterList = gson.fromJson(jsonObj.getJSONArray(ResponseKeys.DATALIST).toString(), t);
 
         }
         return disasterList;
@@ -77,10 +81,25 @@ public class ResponseTranslator {
 
             Type t = new TypeToken<List<CasualityDTO>>(){}.getType();
 
-            casualityList = gson.fromJson(jsonObj.getJSONArray(ResponseKeys.DATA).toString(), t);
+            casualityList = gson.fromJson(jsonObj.getJSONArray(ResponseKeys.DATALIST).toString(), t);
 
         }
         return casualityList;
+    }
+
+    public List<String> translateCasualityResponse(JSONObject jsonObj) throws JSONException{
+        JSONObject status = jsonObj.getJSONObject("status");
+        List<String> helpline = new ArrayList<>();
+        if(status.get("statusCode").equals("0")){
+
+            Type t = new TypeToken<List<String>>(){}.getType();
+
+            helpline = gson.fromJson(jsonObj.getJSONArray(ResponseKeys.DATALIST).toString(), t);
+
+            return helpline;
+        } else {
+            return null;
+        }
     }
 
     public Boolean translateStatusResponse(JSONObject jsonObj) throws JSONException {
@@ -96,6 +115,7 @@ public class ResponseTranslator {
 
     public interface ResponseKeys {
         public static final String DATA = "data";
+        public static final String DATALIST = "dataList";
         public static final String NOTIFICATION = "notification";
         public static final String STATUS = "status";
        

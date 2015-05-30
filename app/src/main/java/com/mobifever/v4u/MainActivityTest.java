@@ -2,16 +2,43 @@ package com.mobifever.v4u;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.mobifever.v4u.helper.CasualityHelper;
+import com.mobifever.v4u.helper.DisasterHelper;
+import com.mobifever.v4u.model.Disaster;
+import com.mobifever.v4u.network.dto.CasualityDTO;
+import com.mobifever.v4u.network.dto.SearchDTO;
+import com.mobifever.v4u.network.service.ServiceCallback;
+import com.mobifever.v4u.network.service.V4UException;
 
-public class MainActivity extends ActionBarActivity {
+import java.util.List;
+
+
+public class MainActivityTest extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        new DisasterHelper(this).getDisasters(null, new ServiceCallback<List<Disaster>>() {
+            @Override
+            public void onSuccess(List<Disaster> disasters) {
+                Log.e("TA", disasters.toString());
+            }
+
+            @Override
+            public void onFailure(V4UException e) {
+
+            }
+        });
+
+
+
+
     }
 
     @Override

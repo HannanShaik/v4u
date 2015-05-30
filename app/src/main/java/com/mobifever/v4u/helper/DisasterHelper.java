@@ -48,14 +48,14 @@ public class DisasterHelper implements V4uApi.IDisaster {
         };
     }
 
-    public void getDisasters(int id,String locationName, final ServiceCallback<List<Disaster>> serviceCallback){
+    public void getDisasters(String locationName, final ServiceCallback<List<Disaster>> serviceCallback){
 
-        final List<Disaster> disasterList=new ArrayList<Disaster>();
         String url;
-        if(locationName==null)
-            url = GET_DISASTERS + "/" + id;
+        if(locationName!=null)
+            url = GET_DISASTERS  + "/" + locationName;
         else
-            url = GET_DISASTERS + "/" + id + "/" + locationName;
+            url = GET_DISASTERS;
+
         try {
 
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
@@ -68,8 +68,8 @@ public class DisasterHelper implements V4uApi.IDisaster {
                     try {
                         List<Disaster> disasters = responseTranslator.translateDisasterList(response);
                         if(disasters!=null){
-                            disasterList.addAll(disasters);
-                            serviceCallback.onSuccess(disasterList);
+                            new SnappyDBHelper(mContext).saveDisasterInfo(disasters);
+                            serviceCallback.onSuccess(disasters);
                         } else {
                             serviceCallback.onFailure(new V4UException("No Disasters Available"));
                         }
@@ -82,7 +82,8 @@ public class DisasterHelper implements V4uApi.IDisaster {
             }, new Response.ErrorListener(){
                 @Override
                 public void onErrorResponse(VolleyError volleyError) {
-                    serviceCallback.onFailure(null);
+                    volleyError.printStackTrace();
+                    serviceCallback.onFailure(new V4UException(volleyError.getMessage()));
                 }
             });
 

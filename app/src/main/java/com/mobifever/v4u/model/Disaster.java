@@ -11,7 +11,7 @@ import java.util.List;
 public class Disaster implements Serializable {
 
     private Integer disasterId;
-    private V4UConstants.DisasterType disasterType;
+    private String disasterType;
     private String location;
     private Long time;
     private Integer numberOfCasualities;
@@ -26,11 +26,11 @@ public class Disaster implements Serializable {
         this.disasterId = disasterId;
     }
 
-    public V4UConstants.DisasterType getDisasterType() {
+    public String getDisasterType() {
         return disasterType;
     }
 
-    public void setDisasterType(V4UConstants.DisasterType disasterType) {
+    public void setDisasterType(String disasterType) {
         this.disasterType = disasterType;
     }
 

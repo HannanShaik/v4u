@@ -10,8 +10,8 @@ import java.io.Serializable;
 public class SearchDTO implements Serializable {
 
     private String personName;
-    private String location;
-    private V4UConstants.DisasterType disasterType;
+    private String myLocation;
+    private String disasterType;
     private int disasterId;
 
     public String getPersonName() {
@@ -23,18 +23,18 @@ public class SearchDTO implements Serializable {
     }
 
     public String getLocation() {
-        return location;
+        return myLocation;
     }
 
     public void setLocation(String location) {
-        this.location = location;
+        this.myLocation = location;
     }
 
-    public V4UConstants.DisasterType getDisasterType() {
+    public String getDisasterType() {
         return disasterType;
     }
 
-    public void setDisasterType(V4UConstants.DisasterType disasterType) {
+    public void setDisasterType(String disasterType) {
         this.disasterType = disasterType;
     }
 
@@ -50,7 +50,7 @@ public class SearchDTO implements Serializable {
     public String toString() {
         return "SearchDTO{" +
                 "personName='" + personName + '\'' +
-                ", location='" + location + '\'' +
+                ", location='" + myLocation + '\'' +
                 ", disasterType=" + disasterType +
                 ", disasterId=" + disasterId +
                 '}';

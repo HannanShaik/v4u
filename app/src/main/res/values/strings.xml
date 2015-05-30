@@ -3,4 +3,44 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_disaster_feed">DisasterFeedActivity</string>
+
+    <string name="drawer_open">Slider Menu Opened</string>
+    <string name="drawer_close">Slider Menu Closed</string>
+
+    <!-- Nav Drawer Menu Items -->
+    <string-array name="nav_drawer_items">
+        <item >Recent Disasters</item>
+        <item >Search People</item>
+        <item >Report Emergency</item>
+        <item >My Profile</item>
+    </string-array>
+
+    <!-- Nav Drawer List Item Icons -->
+    <!-- Keep them in order as the titles are in -->
+    <array name="nav_drawer_icons">
+        <item>@drawable/ic_trends</item>
+        <item>@drawable/ic_search_menu</item>
+        <item>@drawable/ic_warning</item>
+        <item>@drawable/ic_profile</item>
+    </array>
+
+    <string-array name="disaster_types">
+        <item>Earthquake</item>
+        <item>Tsunami</item>
+        <item>Hurricane</item>
+        <item>Volcano</item>
+    </string-array>
+
+    <string-array name="help_types">
+        <item>Medical</item>
+        <item>Food</item>
+        <item>Shelter</item>
+        <item>Transport</item>
+    </string-array>
+
+    <!-- Content Description -->
+    <string name="desc_list_item_icon">Item Icon</string>
+
+
 </resources>

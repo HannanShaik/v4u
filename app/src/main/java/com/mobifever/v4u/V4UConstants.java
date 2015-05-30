@@ -5,8 +5,12 @@ package com.mobifever.v4u;
  */
 public class V4UConstants {
 
+    public static String SMS_IDENTIFIER = "MOBI";
+    public static String V4U_NUMBER = "7667222333";
+
     public enum DisasterType {
-        EARTH_QUAKE,TSUNAMI
+        earthquake,hurricane,cyclone,volcano;
+
     }
 
 }

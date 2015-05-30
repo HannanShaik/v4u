@@ -9,13 +9,40 @@ import java.util.List;
  */
 public class CasualityDTO {
 
+
+    private Integer casualityId;
+    private Integer disasterId;
     private String personName;
-    private V4UConstants.DisasterType disasterType;
+    private String disasterType;
     private String myLocation;
     private String phoneNumber;
-    private Long date;
+    private Long time;
     private List<String> statusOfPerson;
     private String kindOfHelpNeeded;
+
+    public Integer getCasualityId() {
+        return casualityId;
+    }
+
+    public void setCasualityId(Integer casualityId) {
+        this.casualityId = casualityId;
+    }
+
+    public Integer getDisasterId() {
+        return disasterId;
+    }
+
+    public void setDisasterId(Integer disasterId) {
+        this.disasterId = disasterId;
+    }
+
+    public Long getTime() {
+        return time;
+    }
+
+    public void setTime(Long time) {
+        this.time = time;
+    }
 
     public String getPersonName() {
         return personName;
@@ -25,11 +52,11 @@ public class CasualityDTO {
         this.personName = personName;
     }
 
-    public V4UConstants.DisasterType getDisasterType() {
+    public String getDisasterType() {
         return disasterType;
     }
 
-    public void setDisasterType(V4UConstants.DisasterType disasterType) {
+    public void setDisasterType(String disasterType) {
         this.disasterType = disasterType;
     }
 
@@ -49,13 +76,6 @@ public class CasualityDTO {
         this.phoneNumber = phoneNumber;
     }
 
-    public Long getDate() {
-        return date;
-    }
-
-    public void setDate(Long date) {
-        this.date = date;
-    }
 
     public List<String> getStatusOfPerson() {
         return statusOfPerson;
@@ -76,11 +96,13 @@ public class CasualityDTO {
     @Override
     public String toString() {
         return "CasualityDTO{" +
-                "personName='" + personName + '\'' +
+                "casualityId=" + casualityId +
+                ", disasterId=" + disasterId +
+                ", personName='" + personName + '\'' +
                 ", disasterType='" + disasterType + '\'' +
                 ", myLocation='" + myLocation + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
-                ", date=" + date +
+                ", time=" + time +
                 ", statusOfPerson=" + statusOfPerson +
                 ", kindOfHelpNeeded='" + kindOfHelpNeeded + '\'' +
                 '}';
